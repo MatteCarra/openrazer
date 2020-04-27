@@ -881,7 +881,7 @@ class RazerCynosaChroma(_RippleKeyboard):
     }
 
 
-class RazerCynosaChroma(_RippleKeyboard):
+class RazerCynosaChromaPro(_RippleKeyboard):
     """
     Class for the Razer Cynosa Chroma Pro
     """
