@@ -1704,14 +1704,10 @@ class RazerViperUltimateWired(__RazerDeviceSpecialBrightnessSuspend):
 
     USB_VID = 0x1532
     USB_PID = 0x007A
-    HAS_MATRIX = True
-    WAVE_DIRS = (1, 2)
-    MATRIX_DIMS = [1, 20]
     METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate',
                # Logo
-               'get_logo_brightness', 'set_logo_brightness', 'set_logo_wave',
-               'set_logo_static_naga_hex_v2', 'set_logo_spectrum_naga_hex_v2', 'set_logo_none_naga_hex_v2',
-               'set_logo_reactive_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2',
+               'get_logo_brightness', 'set_logo_brightness',
+               'set_logo_static_naga_hex_v2', 'set_logo_none_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2',
                'set_logo_breath_single_naga_hex_v2', 'set_logo_breath_dual_naga_hex_v2']
 
     DEVICE_IMAGE = "https://assets.razerzone.com/eeimages/support/products/1577/ee_photo.png"
@@ -1767,14 +1763,10 @@ class RazerViper(__RazerDeviceSpecialBrightnessSuspend):
 
     USB_VID = 0x1532
     USB_PID = 0x0078
-    HAS_MATRIX = True
-    WAVE_DIRS = (1, 2)
-    MATRIX_DIMS = [1, 16]
     METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate',
                # Logo
-               'get_logo_brightness', 'set_logo_brightness', 'set_logo_wave',
-               'set_logo_static_naga_hex_v2', 'set_logo_spectrum_naga_hex_v2', 'set_logo_none_naga_hex_v2',
-               'set_logo_reactive_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2',
+               'get_logo_brightness', 'set_logo_brightness',
+               'set_logo_static_naga_hex_v2', 'set_logo_none_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2',
                'set_logo_breath_single_naga_hex_v2', 'set_logo_breath_dual_naga_hex_v2']
 
     DEVICE_IMAGE = "https://assets.razerzone.com/eeimages/support/products/1539/1539_viper.png"
