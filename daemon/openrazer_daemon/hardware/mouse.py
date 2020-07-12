@@ -2067,3 +2067,28 @@ class RazerDeathAdderV2(__RazerDeviceSpecialBrightnessSuspend):
         _da_set_logo_brightness(self, logo_brightness)
         _da_set_scroll_brightness(self, scroll_brightness)
         self.disable_notify = False
+
+
+class RazerAtheris(__RazerDevice):
+    """
+    Class for the Razer Atheris
+    """
+    USB_VID = 0x1532
+    USB_PID = 0x0062
+    EVENT_FILE_REGEX = re.compile(r'.*Razer_Razer_Atheris_-_Mobile_Gaming_Mouse-if0(1|2)-event-kbd')
+    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate']
+
+    DEVICE_IMAGE = "https://assets.razerzone.com/eeimages/support/products/1234/1234_atheris.png"
+
+    # Deprecated - RAZER_URLS be removed in future.
+    RAZER_URLS = {
+        "top_img": "https://assets.razerzone.com/eeimages/support/products/1234/1234_atheris.png",
+    }
+
+    DPI_MAX = 7200
+
+    def _resume_device(self):
+        self.logger.debug("Atheris doesn't have suspend/resume")
+
+    def _suspend_device(self):
+        self.logger.debug("Atheris doesn't have suspend/resume")
