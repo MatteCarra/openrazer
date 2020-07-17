@@ -73,6 +73,9 @@
 #define RAZER_NEW_MOUSE_RECEIVER_WAIT_MIN_US 31000
 #define RAZER_NEW_MOUSE_RECEIVER_WAIT_MAX_US 31100
 
+#define RAZER_ATHERIS_RECEIVER_WAIT_MIN_US 600
+#define RAZER_ATHERIS_RECEIVER_WAIT_MAX_US 51100
+
 struct razer_mouse_device {
     struct usb_device *usb_dev;
     struct mutex lock;
