@@ -2076,7 +2076,9 @@ class RazerAtheris(__RazerDevice):
     USB_VID = 0x1532
     USB_PID = 0x0062
     EVENT_FILE_REGEX = re.compile(r'.*Razer_Razer_Atheris_-_Mobile_Gaming_Mouse-if0(1|2)-event-kbd')
-    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate']
+    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate',
+                   # Battery
+               'get_battery', 'set_idle_time', 'set_low_battery_threshold']
 
     DEVICE_IMAGE = "https://assets.razerzone.com/eeimages/support/products/1234/1234_atheris.png"
 
@@ -2092,3 +2094,17 @@ class RazerAtheris(__RazerDevice):
 
     def _suspend_device(self):
         self.logger.debug("Atheris doesn't have suspend/resume")
+
+    def __init__(self, *args, **kwargs):
+        super(RazerAtheris, self).__init__(*args, **kwargs)
+
+        self._battery_manager = _BatteryManager(self, self._device_number, 'Razer Atheris')
+        self._battery_manager.active = self.config.getboolean('Startup', 'mouse_battery_notifier', fallback=False)
+
+    def _close(self):
+        """
+        Close the key manager
+        """
+        super(RazerAtheris, self)._close()
+
+        self._battery_manager.close()
