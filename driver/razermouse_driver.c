@@ -746,7 +746,7 @@ static ssize_t razer_attr_read_get_serial(struct device *dev, struct device_attr
     case USB_DEVICE_ID_RAZER_DEATHADDER_V2:
         report.transaction_id.id = 0x3f;
         break;
-        
+
     case USB_DEVICE_ID_RAZER_ATHERIS:
         report.transaction_id.id = 0x1f;
         break;
@@ -908,7 +908,7 @@ static ssize_t razer_attr_read_poll_rate(struct device *dev, struct device_attri
     case USB_DEVICE_ID_RAZER_DEATHADDER_V2:
         report.transaction_id.id = 0x3f;
         break;
-        
+
     case USB_DEVICE_ID_RAZER_ATHERIS:
         report.transaction_id.id = 0x1f;
         break;
@@ -973,7 +973,7 @@ static ssize_t razer_attr_write_poll_rate(struct device *dev, struct device_attr
     case USB_DEVICE_ID_RAZER_DEATHADDER_V2:
         report.transaction_id.id = 0x3f;
         break;
-        
+
     case USB_DEVICE_ID_RAZER_ATHERIS:
         report.transaction_id.id = 0x1f;
         break;
