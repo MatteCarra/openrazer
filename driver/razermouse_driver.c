@@ -3607,7 +3607,7 @@ static int razer_mouse_probe(struct hid_device *hdev, const struct hid_device_id
         case USB_DEVICE_ID_RAZER_VIPER_ULTIMATE_WIRELESS:
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_charge_level);
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_charge_status);
-            CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_charge_low_threshold);            
+            CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_charge_low_threshold);
         /* fall through */
         case USB_DEVICE_ID_RAZER_VIPER:
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_poll_rate);
@@ -4036,7 +4036,7 @@ static void razer_mouse_disconnect(struct hid_device *hdev)
             device_remove_file(&hdev->dev, &dev_attr_charge_level);
             device_remove_file(&hdev->dev, &dev_attr_charge_status);
             device_remove_file(&hdev->dev, &dev_attr_charge_low_threshold);
-        /* fall through */            
+        /* fall through */
         case USB_DEVICE_ID_RAZER_VIPER:
             device_remove_file(&hdev->dev, &dev_attr_poll_rate);
             device_remove_file(&hdev->dev, &dev_attr_device_idle_time);
