@@ -2089,12 +2089,6 @@ class RazerAtheris(__RazerDevice):
 
     DPI_MAX = 7200
 
-    def _resume_device(self):
-        self.logger.debug("Atheris doesn't have suspend/resume")
-
-    def _suspend_device(self):
-        self.logger.debug("Atheris doesn't have suspend/resume")
-
     def __init__(self, *args, **kwargs):
         super(RazerAtheris, self).__init__(*args, **kwargs)
 
