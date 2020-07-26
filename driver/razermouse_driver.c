@@ -55,7 +55,7 @@ static int razer_get_report(struct usb_device *usb_dev, struct razer_report *req
         return razer_get_usb_response(usb_dev, 0x00, request_report, 0x00, response_report, RAZER_NEW_MOUSE_RECEIVER_WAIT_MIN_US, RAZER_NEW_MOUSE_RECEIVER_WAIT_MAX_US);
         break;
 
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         return razer_get_usb_response(usb_dev, 0x00, request_report, 0x00, response_report, RAZER_ATHERIS_RECEIVER_WAIT_MIN_US, RAZER_ATHERIS_RECEIVER_WAIT_MAX_US);
         break;
 
@@ -386,8 +386,8 @@ static ssize_t razer_attr_read_device_type(struct device *dev, struct device_att
         device_type = "Razer DeathAdder V2\n";
         break;
 
-    case USB_DEVICE_ID_RAZER_ATHERIS:
-        device_type = "Razer Atheris\n";
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
+        device_type = "Razer Atheris (Receiver)\n";
         break;
 
     default:
@@ -418,7 +418,7 @@ static ssize_t razer_attr_read_get_firmware_version(struct device *dev, struct d
         break;
 
     case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
 
@@ -747,7 +747,7 @@ static ssize_t razer_attr_read_get_serial(struct device *dev, struct device_attr
         report.transaction_id.id = 0x3f;
         break;
 
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
     }
@@ -782,7 +782,7 @@ static ssize_t razer_attr_read_get_battery(struct device *dev, struct device_att
         break;
     case USB_DEVICE_ID_RAZER_LANCEHEAD_WIRELESS_RECEIVER:
     case USB_DEVICE_ID_RAZER_LANCEHEAD_WIRELESS_WIRED:
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
     }
@@ -909,7 +909,7 @@ static ssize_t razer_attr_read_poll_rate(struct device *dev, struct device_attri
         report.transaction_id.id = 0x3f;
         break;
 
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
     }
@@ -974,7 +974,7 @@ static ssize_t razer_attr_write_poll_rate(struct device *dev, struct device_attr
         report.transaction_id.id = 0x3f;
         break;
 
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
     }
@@ -1158,7 +1158,7 @@ static ssize_t razer_attr_write_mouse_dpi(struct device *dev, struct device_attr
     case USB_DEVICE_ID_RAZER_OROCHI_2013:
     case USB_DEVICE_ID_RAZER_IMPERATOR:
     case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         varstore = VARSTORE;
         break;
 
@@ -1199,7 +1199,7 @@ static ssize_t razer_attr_write_mouse_dpi(struct device *dev, struct device_attr
             break;
 
         case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-        case USB_DEVICE_ID_RAZER_ATHERIS:
+        case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
             report.transaction_id.id = 0x1f;
             break;
         }
@@ -1258,7 +1258,7 @@ static ssize_t razer_attr_read_mouse_dpi(struct device *dev, struct device_attri
         break;
 
     case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report = razer_chroma_misc_get_dpi_xy(NOSTORE);
         report.transaction_id.id = 0x1f;
         break;
@@ -1451,7 +1451,7 @@ static ssize_t razer_attr_write_device_mode(struct device *dev, struct device_at
             break;
 
         case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-        case USB_DEVICE_ID_RAZER_ATHERIS:
+        case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
             report.transaction_id.id = 0x1f;
             break;
 
@@ -1512,7 +1512,7 @@ static ssize_t razer_attr_read_device_mode(struct device *dev, struct device_att
         break;
 
     case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-    case USB_DEVICE_ID_RAZER_ATHERIS:
+    case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
         report.transaction_id.id = 0x1f;
         break;
     }
@@ -3639,7 +3639,7 @@ static int razer_mouse_probe(struct hid_device *hdev, const struct hid_device_id
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_logo_matrix_effect_none);
             break;
 
-        case USB_DEVICE_ID_RAZER_ATHERIS:
+        case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_dpi);
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_poll_rate);
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_charge_level);
@@ -4072,7 +4072,7 @@ static void razer_mouse_disconnect(struct hid_device *hdev)
             device_remove_file(&hdev->dev, &dev_attr_logo_matrix_effect_none);
             break;
 
-        case USB_DEVICE_ID_RAZER_ATHERIS:
+        case USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER:
             device_remove_file(&hdev->dev, &dev_attr_dpi);
             device_remove_file(&hdev->dev, &dev_attr_poll_rate);
             device_remove_file(&hdev->dev, &dev_attr_charge_level);
@@ -4140,7 +4140,7 @@ static const struct hid_device_id razer_devices[] = {
     { HID_USB_DEVICE(USB_VENDOR_ID_RAZER,USB_DEVICE_ID_RAZER_VIPER_ULTIMATE_WIRELESS) },
     { HID_USB_DEVICE(USB_VENDOR_ID_RAZER,USB_DEVICE_ID_RAZER_BASILISK) },
     { HID_USB_DEVICE(USB_VENDOR_ID_RAZER,USB_DEVICE_ID_RAZER_DEATHADDER_V2) },
-    { HID_USB_DEVICE(USB_VENDOR_ID_RAZER,USB_DEVICE_ID_RAZER_ATHERIS) },
+    { HID_USB_DEVICE(USB_VENDOR_ID_RAZER,USB_DEVICE_ID_RAZER_ATHERIS_RECEIVER) },
     { 0 }
 };
 

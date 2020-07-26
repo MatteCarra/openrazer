@@ -2069,9 +2069,9 @@ class RazerDeathAdderV2(__RazerDeviceSpecialBrightnessSuspend):
         self.disable_notify = False
 
 
-class RazerAtheris(__RazerDevice):
+class RazerAtherisReceiver(__RazerDevice):
     """
-    Class for the Razer Atheris
+    Class for the Razer Atheris (Receiver)
     """
     USB_VID = 0x1532
     USB_PID = 0x0062
@@ -2090,15 +2090,15 @@ class RazerAtheris(__RazerDevice):
     DPI_MAX = 7200
 
     def __init__(self, *args, **kwargs):
-        super(RazerAtheris, self).__init__(*args, **kwargs)
+        super(RazerAtherisReceiver, self).__init__(*args, **kwargs)
 
-        self._battery_manager = _BatteryManager(self, self._device_number, 'Razer Atheris')
+        self._battery_manager = _BatteryManager(self, self._device_number, 'Razer Atheris (Receiver)')
         self._battery_manager.active = self.config.getboolean('Startup', 'mouse_battery_notifier', fallback=False)
 
     def _close(self):
         """
         Close the key manager
         """
-        super(RazerAtheris, self)._close()
+        super(RazerAtherisReceiver, self)._close()
 
         self._battery_manager.close()
