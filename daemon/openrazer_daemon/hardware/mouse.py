@@ -1754,6 +1754,21 @@ class RazerViperUltimateWireless(RazerViperUltimateWired):
 
     USB_VID = 0x1532
     USB_PID = 0x007B
+    METHODS = RazerViperUltimateWired.METHODS + ['set_charge_effect', 'set_charge_colour']
+
+    def __init__(self, *args, **kwargs):
+        super(RazerViperUltimateWireless, self).__init__(*args, **kwargs)
+
+        self._battery_manager = _BatteryManager(self, self._device_number, 'Razer Viper Ultimate Wireless')
+        self._battery_manager.active = self.config.getboolean('Startup', 'mouse_battery_notifier', fallback=False)
+
+    def _close(self):
+        """
+        Close the key manager
+        """
+        super(RazerViperUltimateWireless, self)._close()
+
+        self._battery_manager.close()
 
 
 class RazerViper(__RazerDeviceSpecialBrightnessSuspend):
